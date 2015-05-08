@@ -5,7 +5,7 @@ var cp = require('child_process');
 var fs = require('fs');
 var dir = process.env.PWD + '/test_plates';
 function callCommand(filename) {
-    var command = 'alpr -c eu --clock ' +  filename.toString();
+    var command = 'alpr --country eu --clock ' +  filename.toString();
     //var command = 'node -v';
     cp.exec(command, function(error, stdout, stderr) {
         console.log(filename);
