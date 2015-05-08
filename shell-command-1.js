@@ -3,7 +3,7 @@
  */
 var cp = require('child_process');
 var fs = require('fs');
-
+var dir = process.env.PWD + '/test_plates';
 function callCommand(filename) {
     var command = 'alpr -c us --clock ' +  filename.toString();
     //var command = 'node -v';
@@ -17,12 +17,12 @@ function callCommand(filename) {
     })
 }
 
-fs.readdir(process.env.PWD + '/test_plates', function(err, list){
+fs.readdir(dir, function(err, list){
     if (err) return done(err);
     list.forEach(function (filename, index) {
         //console.log(dir.toString() + '/' + filename);
-        var fileName = list[index];
-        callCommand(fileName);
+        var path_to_filename =  dir + '/' +list[index];
+        callCommand(path_to_filename);
     });
 });
 
